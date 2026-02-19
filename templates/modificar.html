@@ -3,13 +3,15 @@
  {% block container%}
        
 <body>
- 
-    <!-- novalidate se usa para no validar con las restrcciones que pusimos en el forms -->
-    
+     
 <form action="" method="POST"  class="max-w-sm mx-auto">
   {{csrf_token()}}
 
   <input type="hidden" name="csrf_token" value="{{csrf_token()}}"/>
+
+<div class="mb-5">
+    {{macros.campoNuevo(form.id, class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body")}}
+  </div>
 
 
   <div class="mb-5">
