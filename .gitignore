@@ -1,2 +1,4 @@
 .env
-node_modules
+migrations/version/*
+__pycache__/
+node_modules/

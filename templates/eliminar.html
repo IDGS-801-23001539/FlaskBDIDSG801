@@ -1,0 +1,41 @@
+{%extends "layout.html"%}
+{%import "_macros.html" as macros %}
+ {% block container%}
+       
+<body>
+     
+<form action="" method="POST"  class="max-w-sm mx-auto">
+  {{csrf_token()}}
+
+  <input type="hidden" name="csrf_token" value="{{csrf_token()}}"/>
+
+<div class="mb-5">
+    {{macros.campoNuevo(form.id, class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body")}}
+  </div>
+
+
+  <div class="mb-5">
+    {{macros.campoNuevo(form.nombre, class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body")}}
+  </div>
+   <div class="mb-5">
+        {{macros.campoNuevo(form.apaterno, class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body")}}
+
+     </div>
+      {{macros.campoNuevo(form.email, class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body")}}
+
+  <label for="remember" class="flex items-center mb-5">
+    <input id="remember" type="checkbox" value="" class="w-4 h-4 border border-default-medium rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft" required />
+    <p class="ms-2 text-sm font-medium text-heading select-none">I agree with the <a href="#" class="text-fg-brand hover:underline">terms and conditions</a>.</p>
+  </label>
+  <button type="submit" class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-base text-sm px-4 py-2.5 text-center leading-5">Eliminar</button>
+  
+<a href="/" class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-base text-sm px-4 py-2.5 text-center leading-5">Cancelar</a>
+
+
+
+</form>
+
+
+
+</body>
+        {% endblock %}
