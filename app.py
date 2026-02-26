@@ -37,8 +37,9 @@ def alumnos():
 	if request.method=='POST':
 
 		alum=Alumnos(nombre=create_form.nombre.data,
-			   apaterno=create_form.apaterno.data,
-			   email=create_form.email.data)
+			   apellidos=create_form.apellidos.data,
+			   email=create_form.email.data,
+			   telefono=create_form.telefono.data)
 		db.session.add(alum)
 		db.session.commit()
 		return redirect(url_for('index'))
@@ -55,9 +56,10 @@ def detalles():
 		id=request.args.get('id')
 		#print(alum1.nombre + alum1.apaterno + alum1.email)
 		nombre=alum1.nombre
-		apaterno=alum1.apaterno
+		apellidos=alum1.apellidos
 		email=alum1.email
-	return render_template('detalles.html', nombre=nombre, apaterno=apaterno, email=email)
+		telefono=alum1.telefono
+	return render_template('detalles.html', nombre=nombre, apellidos=apellidos, email=email, telefono=telefono)
 
 @app.route("/modificar", methods=['GET','POST'])
 def modificar():
@@ -69,8 +71,9 @@ def modificar():
 
 		create_form.id.data=id
 		create_form.nombre.data=alum1.nombre
-		create_form.apaterno.data=alum1.apaterno
+		create_form.apellidos.data=alum1.apellidos
 		create_form.email.data=alum1.email
+		create_form.telefono.data=alum1.telefono
 
 		return render_template('modificar.html', form=create_form)
 	
@@ -78,8 +81,9 @@ def modificar():
 		id=create_form.id.data
 		alum1=db.session.query(Alumnos).filter(Alumnos.id==id).first()
 		alum1.nombre=str.rstrip(create_form.nombre.data)
-		alum1.apaterno=str.rstrip(create_form.apaterno.data)
+		alum1.apellidos=str.rstrip(create_form.apellidos.data)
 		alum1.email=str.rstrip(create_form.email.data)
+		alum1.telefono=str.rstrip(create_form.telefono.data)
 		db.session.add(alum1)
 		db.session.commit()
 		return redirect(url_for('index'))
@@ -93,8 +97,9 @@ def eliminar():
 		if alum1:
 			create_form.id.data=alum1.id
 			create_form.nombre.data= alum1.nombre
-			create_form.apaterno.data=alum1.apaterno
+			create_form.apellidos.data=alum1.apellidos
 			create_form.email.data=alum1.email
+			create_form.telefono.data=alum1.telefono
 			return  render_template("eliminar.html", form=create_form)
 	
 	if request.method=='POST':
