@@ -1,32 +1,44 @@
 {%extends "layout.html"%}
 {%import "_macros.html" as macros %}
  {% block container%}
-       
+       {% if errores %}
+    <ul>
+    {% for campo, mensajes in errores.items() %}
+        {% for mensaje in mensajes %}
+           
+ <li style="text-align: center;color: red; background-color: lightblue" > {{mensaje}}</li>
+
+
+        {% endfor %}
+    {% endfor %}
+    </ul>
+{% endif %}
 <body>
-     
+ 
+    <!-- novalidate se usa para no validar con las restrcciones que pusimos en el forms -->
+    
 <form action="" method="POST"  class="max-w-sm mx-auto">
   {{csrf_token()}}
 
   <input type="hidden" name="csrf_token" value="{{csrf_token()}}"/>
 
 <div class="mb-5">
-    {{macros.campoNuevo(form.id, class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body")}}
+    {{macros.campoNuevo(form.matricula, class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body")}}
   </div>
-
-
   <div class="mb-5">
     {{macros.campoNuevo(form.nombre, class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body")}}
   </div>
    <div class="mb-5">
         {{macros.campoNuevo(form.apellidos, class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body")}}
-     </div>
-        <div class="mb-5">
-      {{macros.campoNuevo(form.email, class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body")}}
-        </div>
-             <div class="mb-5">
-      {{macros.campoNuevo(form.telefono, class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body")}}
-        </div>
 
+     </div>
+     <div class="mb-5">
+      {{macros.campoNuevo(form.especialidad, class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body")}}
+     </div>
+      <div class="mb-5">
+        {{macros.campoNuevo(form.email, class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body")}}
+
+     </div>
   <label for="remember" class="flex items-center mb-5">
     <input id="remember" type="checkbox" value="" class="w-4 h-4 border border-default-medium rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft" required />
     <p class="ms-2 text-sm font-medium text-heading select-none">I agree with the <a href="#" class="text-fg-brand hover:underline">terms and conditions</a>.</p>
