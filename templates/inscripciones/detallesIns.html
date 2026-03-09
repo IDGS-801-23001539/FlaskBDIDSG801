@@ -8,25 +8,22 @@
 
 <div class="w-full max-w-sm p-6 bg-neutral-primary-soft border border-default rounded-base shadow-xs">
     <h5 class="mb-4 text-xl font-medium text-body">
-        Nombre:{{nombre}}
+        Inscripción
     </h5>
    
     <ul role="list" class="space-y-4 my-6">
         <li class="flex items-center">
             <svg class="w-5 h-5 shrink-0 text-fg-brand me-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
-            <span class="text-body">Apellidos: {{apellidos}}</span>
+            <span class="text-body">Alumno: {{alumno.nombre}} {{alumno.apellidos}}</span>
         </li>
         <li class="flex items-center">
             <svg class="w-5 h-5 shrink-0 text-fg-brand me-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
-            <span class="text-body">Correo: {{email}}</span>
-        </li>
-        <li class="flex items-center">
-            <svg class="w-5 h-5 shrink-0 text-fg-brand me-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
-            <span class="text-body">Telefono: {{telefono}}</span>
+            <span class="text-body">Curso: {{curso.nombre}}</span>
         </li>
        
+       
     </ul>
-    <a href="{{ url_for('alumnos.listaAlumnos')}}" class="w-full text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Regresar</a>
+    <a href="{{ url_for('inscripciones.listaInscripciones')}}" class="w-full text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Regresar</a>
 </div>
 </div>
 {%endblock%}

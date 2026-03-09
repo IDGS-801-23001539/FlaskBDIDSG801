@@ -1,0 +1,86 @@
+
+{% extends "layout.html"%}
+
+{%block container%}
+
+
+
+
+<div class=" flex justify-center min-h-scree">
+<div class="relative overflow-x-auto bg-neutral-primary-soft shadow-xs rounded-base border border-default">
+   
+    <table class="w-full text-sm text-left rtl:text-right text-body">
+     
+<div class="flex justify-between items-center mb-4 w-full">
+<a href="{{ url_for('cursos.agregarCurso') }}" class="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-base text-sm px-4 py-2.5 w-full text-center leading-5">Nuevo</a>
+</div>
+        <thead class="text-sm text-body bg-neutral-secondary-medium border-b border-default-medium">
+          
+            <tr>
+              
+                <th scope="col" class="px-6 py-3 font-medium">
+                    Nombre
+                </th>
+                <th scope="col" class="px-6 py-3 font-medium">
+                    Decripción
+                </th>
+                <th scope="col" class="px-6 py-3 font-medium">
+                    Maestro
+                </th>
+                
+                <th scope="col" class="px-6 py-3 font-medium">
+                    Acciones
+                </th>
+            </tr>
+        </thead>
+
+
+        <tbody>
+          {%for cur in curso%}
+          
+           <tr>
+             
+                <td class="px-6 py-4">
+                    {{cur.nombre}}
+                </td>
+                <td class="px-6 py-4">
+                     {{cur.descripcion}}
+                </td>
+                <td class="px-6 py-4">
+                     {{cur.maestro.nombre}}  {{cur.maestro.apellidos}}
+                </td>
+                
+               
+                <td class="px-6 py-4 text-right">
+              <a href="{{ url_for('cursos.modificarCurso', id=cur.id) }}">
+
+<button type="button" class="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-base text-sm px-4 py-2.5 text-center leading-5">Editar</button>
+            </a>    </td>
+                 <td class="px-6 py-4 text-right">
+                    <a href="{{url_for('cursos.detallesCurso',id=cur.id)}}">
+                <button type="button" class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-base text-sm px-4 py-2.5 text-center leading-5">Detalles</button>
+</a>
+                  </td> 
+                <td class="px-6 py-4 text-right">
+              <a href="{{url_for('cursos.eliminarCurso',id=cur.id)}}">
+
+<button type="button" class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-base text-sm px-4 py-2.5 text-center leading-5">Eliminar</button>
+  </td> 
+
+                <td class="px-6 py-4 text-right">
+
+
+<a href="{{ url_for('cursos.alumnosCurso', id=cur.id) }}">
+<button type="button" class="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-base text-sm px-4 py-2.5 text-center leading-5">Ver Alumnos</button>
+</a></td>
+
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+</div>
+</div>
+
+
+{% endblock%}
+

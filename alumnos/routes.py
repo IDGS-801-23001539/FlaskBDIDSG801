@@ -15,7 +15,7 @@ def listaAlumnos():
 	create_form=forms.UserForm2(request.form)
 	#ORM SELECT * FROM Alumnos;
 	alumno=Alumnos.query.all()
-	return render_template("alumnos/index.html", form=create_form, alumno=alumno)
+	return render_template("alumnos/listaAlumnos.html", form=create_form, alumno=alumno)
 
 
 @alumnos.route("/agregarA", methods=['GET','POST'])
@@ -100,4 +100,15 @@ def eliminarAlumno():
 			return redirect(url_for('alumnos.listaAlumnos'))
 	
 	return render_template("alumnos/eliminar.html", form=create_form)
-		
+	
+
+@alumnos.route("/cursosAlumno/<int:id>")
+def cursosAlumno(id):
+
+    alumno = Alumnos.query.get(id)
+
+    return render_template(
+        "alumnos/cursosAlumno.html",
+        alumno=alumno,
+        cursos=alumno.cursos
+    )
